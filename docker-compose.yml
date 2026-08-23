@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: hibir_db
+    restart: always
+    environment:
+      POSTGRES_DB: hibir_db
+      POSTGRES_USER: hibir_user
+      POSTGRES_PASSWORD: hibir_secure_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: hibir_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  backend:
+    build:
+      context: ./apps/backend
+    container_name: hibir_backend
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./apps/backend:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./apps/backend/.env
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build:
+      context: ./apps/frontend
+    container_name: hibir_frontend
+    restart: always
+    command: npm run dev -- -H 0.0.0.0
+    volumes:
+      - ./apps/frontend:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./apps/frontend/.env.local
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

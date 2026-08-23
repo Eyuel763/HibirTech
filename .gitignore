@@ -1,0 +1,24 @@
+# Python / Django
+*.pyc
+__pycache__/
+*.sqldiff
+venv/
+.env
+.env.*
+!.env.example
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Docker / OS / IDEs
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+*.sqlite3
+*.db
