@@ -19,31 +19,44 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 
 # Global Django Admin Customization
 admin.site.site_header = "Hibir Technologies Administration"
 admin.site.site_title = "Hibir Tech Admin Portal"
 admin.site.index_title = "Platform Content & Settings Management"
 
+api_v1_patterns = [
+    # Schema & Documentation
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "docs/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path(
+        "redoc/",
+        SpectacularRedocView.as_view(url_name="schema"),
+        name="redoc",
+    ),
+    path("settings/", include("apps.core.urls")),
+    path("pages/", include("apps.pages.urls")),
+    path("faqs/", include("apps.pages.faq_urls")),
+    path("programs/", include("apps.programs.urls")),
+    path("events/", include("apps.events.urls")),
+    path("projects/", include("apps.projects.urls")),
+    path("news/", include("apps.news.urls")),
+    path("team/", include("apps.team.urls")),
+    path("inquiries/", include("apps.inquiries.urls")),
+]
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path(
-        "api/v1/",
-        include(
-            [
-                path("core/", include("apps.core.urls")),
-                path("pages/", include("apps.pages.urls")),
-                path("programs/", include("apps.programs.urls")),
-                path("events/", include("apps.events.urls")),
-                path("projects/", include("apps.projects.urls")),
-                path("news/", include("apps.news.urls")),
-                path("team/", include("apps.team.urls")),
-                path("inquiries/", include("apps.inquiries.urls")),
-                path("media/", include("apps.media_manager.urls")),
-                path("users/", include("apps.users.urls")),
-            ]
-        ),
-    ),
+    path("api/v1/", include((api_v1_patterns, "api-v1"))),
 ]
 
 if settings.DEBUG:

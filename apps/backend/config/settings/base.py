@@ -13,9 +13,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Third-party apps
+    # Django Apps
     "rest_framework",
     "corsheaders",
+    "django_filters",
+    "drf_spectacular",
     # Local domain apps
     "apps.core",
     "apps.pages",
@@ -103,6 +105,24 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.FormParser",
         "rest_framework.parsers.MultiPartParser",
     ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
+        "rest_framework.filters.OrderingFilter",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ],
+}
+
+# OpenAPI Documentation Settings
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Hibir Technologies Public API",
+    "DESCRIPTION": "Public RESTful API for Hibir Technologies STEM Academy, CMS, and Inquiry Services.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 # CORS & CSRF Settings
@@ -110,6 +130,7 @@ CORS_ALLOWED_ORIGINS = os.getenv(
     "CORS_ALLOWED_ORIGINS",
     "http://localhost:3000,http://127.0.0.1:3000",
 ).split(",")
+CORS_ALLOW_ALL_ORIGINS = True  # Set to specific domains in production settings
 
 CORS_ALLOW_CREDENTIALS = True
 

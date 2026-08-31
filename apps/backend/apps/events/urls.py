@@ -1,5 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import EventViewSet, EventCategoryViewSet
 
-app_name = "events"
+router = DefaultRouter()
+router.register(r"categories", EventCategoryViewSet, basename="event-category")
+router.register(r"", EventViewSet, basename="event")
 
-urlpatterns = []
+urlpatterns = [
+    path("", include(router.urls)),
+]

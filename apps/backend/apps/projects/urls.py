@@ -1,5 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ProjectViewSet, ProjectCategoryViewSet
 
-app_name = "projects"
+router = DefaultRouter()
+router.register(r"categories", ProjectCategoryViewSet, basename="project-category")
+router.register(r"", ProjectViewSet, basename="project")
 
-urlpatterns = []
+urlpatterns = [
+    path("", include(router.urls)),
+]
