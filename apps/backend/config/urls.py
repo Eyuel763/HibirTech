@@ -35,12 +35,12 @@ api_v1_patterns = [
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "docs/",
-        SpectacularSwaggerView.as_view(url_name="schema"),
+        SpectacularSwaggerView.as_view(url_name="api-v1:schema"),
         name="swagger-ui",
     ),
     path(
         "redoc/",
-        SpectacularRedocView.as_view(url_name="schema"),
+        SpectacularRedocView.as_view(url_name="api-v1:schema"),
         name="redoc",
     ),
     path("settings/", include("apps.core.urls")),

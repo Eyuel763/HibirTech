@@ -1,29 +1,18 @@
-from rest_framework import serializers
+from rest_framework import generics, permissions
 from .models import FAQ, Page
+from .serializers import FAQSerializer, PageSerializer
 
 
-class PageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Page
-        fields = (
-            "id",
-            "title",
-            "slug",
-            "content",
-            "meta_title",
-            "meta_description",
-            "published_at",
-            "updated_at",
-        )
+class PageDetailView(generics.RetrieveAPIView):
+    queryset = Page.objects.filter(status="published")
+    serializer_class = PageSerializer
+    permission_classes = [permissions.AllowAny]
+    lookup_field = "slug"
 
 
-class FAQSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FAQ
-        fields = (
-            "id",
-            "question",
-            "answer",
-            "category",
-            "sort_order",
-        )
+class FAQListView(generics.ListAPIView):
+    queryset = FAQ.objects.filter(is_active=True).order_by("sort_order", "id")
+    serializer_class = FAQSerializer
+    permission_classes = [permissions.AllowAny]
+    filterset_fields = ["category"]
+    search_fields = ["question", "answer"]
