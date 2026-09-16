@@ -34,6 +34,7 @@ export interface StudentProject {
 export interface AcademyEvent {
   id: string;
   title: string;
+  slug: string;
   date: string;
   location: string;
   type: 'Workshop' | 'Hackathon' | 'Exposition' | 'Webinar';

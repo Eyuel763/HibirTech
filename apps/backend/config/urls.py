@@ -52,6 +52,7 @@ api_v1_patterns = [
     path("news/", include("apps.news.urls")),
     path("team/", include("apps.team.urls")),
     path("inquiries/", include("apps.inquiries.urls")),
+    path("leads/", include("apps.leads.urls")),
 ]
 
 urlpatterns = [

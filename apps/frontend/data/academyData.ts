@@ -96,6 +96,7 @@ export const STUDENT_PROJECTS: StudentProject[] = [
 export const ACADEMY_EVENTS: AcademyEvent[] = [
   {
     id: 'event-1',
+    slug: 'robotics-expo-2026',
     title: 'Youth Robotics & Hardware Exposition',
     date: 'October 15, 2026',
     location: 'Hibir STEM Center, Addis Ababa',
@@ -105,6 +106,7 @@ export const ACADEMY_EVENTS: AcademyEvent[] = [
   },
   {
     id: 'event-2',
+    slug: 'block-coding-workshop',
     title: 'Introduction to Block-Coding Workshop',
     date: 'November 5, 2026',
     location: 'Virtual / Online',
