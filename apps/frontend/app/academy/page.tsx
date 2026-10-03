@@ -21,10 +21,12 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 
+import ProjectCarousel from '@/components/academy/ProjectCarousel';
+import TestimonialCarousel from '@/components/academy/TestimonialCarousel';
+
 import { 
   STEM_DISCIPLINES, 
   ACADEMY_PROGRAMS, 
-  STUDENT_PROJECTS, 
   ACADEMY_EVENTS, 
   IMPACT_STATS 
 } from '@/data/academyData';
@@ -53,7 +55,7 @@ export default function AcademyLandingPage() {
               Hands-on STEM education bridging software development, hardware engineering, robotics, and artificial intelligence for young builders.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-              <Link href="#programs">
+              <Link href="/academy/programs">
                 <Button variant="primary" size="lg" className="gap-2">
                   Explore Programs <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -193,37 +195,29 @@ export default function AcademyLandingPage() {
         </Container>
       </Section>
 
-      {/* 5. PROJECTS */}
+      {/* 5. STUDENT SHOWCASE — IMAGE CAROUSEL */}
       <Section className="bg-muted-bg/30 border-y border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <Badge variant="accent" className="mb-2">Student Showcase</Badge>
             <h2 className="text-2xl sm:text-3xl font-bold text-secondary">Built by STEM Academy Students</h2>
-            <p className="text-base text-muted mt-2">Real projects designed and programmed by our youth cohorts.</p>
+            <p className="text-base text-muted mt-2">Real projects designed, programmed, and assembled by our youth cohorts.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {STUDENT_PROJECTS.map((proj) => (
-              <Card key={proj.id} className="p-6 flex flex-col justify-between">
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-primary">{proj.studentName} (Age {proj.age})</span>
-                    <Badge variant="secondary" className="uppercase text-xs font-semibold">{proj.discipline}</Badge>
-                  </div>
-                  <h3 className="text-lg font-bold text-secondary">{proj.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{proj.description}</p>
-                </div>
+          <ProjectCarousel />
+        </Container>
+      </Section>
 
-                <div className="pt-4 mt-4 border-t border-subtle flex items-center gap-1.5">
-                  {proj.tags.map((t, idx) => (
-                    <span key={idx} className="text-xs font-mono font-medium bg-surface border border-subtle px-2.5 py-1 rounded text-secondary">
-                      #{t}
-                    </span>
-                  ))}
-                </div>
-              </Card>
-            ))}
+      {/* 5b. TESTIMONIALS — VIDEO CAROUSEL */}
+      <Section className="bg-surface">
+        <Container>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <Badge variant="primary" className="mb-2">Voices of Impact</Badge>
+            <h2 className="text-2xl sm:text-3xl font-bold text-secondary">What Parents &amp; Students Say</h2>
+            <p className="text-base text-muted mt-2">Hear directly from the families and students whose lives have been changed by hands-on STEM education.</p>
           </div>
+
+          <TestimonialCarousel />
         </Container>
       </Section>
 
