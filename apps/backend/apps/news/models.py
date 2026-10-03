@@ -51,6 +51,18 @@ class NewsArticle(TimeStampedUUIDModel):
     featured = models.BooleanField(default=False, db_index=True)
     published_at = models.DateTimeField(null=True, blank=True, db_index=True)
 
+    # SEO Metadata
+    meta_title = models.CharField(
+        max_length=255, 
+        blank=True, 
+        help_text="Custom HTML title tag. Fallback to article title if blank."
+    )
+    meta_description = models.TextField(
+        max_length=500, 
+        blank=True, 
+        help_text="Custom meta description. Fallback to excerpt if blank."
+    )
+
     class Meta:
         ordering = ["-published_at", "-created_at"]
         indexes = [

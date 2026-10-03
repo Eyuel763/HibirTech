@@ -61,6 +61,16 @@ class NewsArticleAdmin(admin.ModelAdmin):
                 )
             },
         ),
+        (
+            "SEO Metadata",
+            {
+                "classes": ("collapse",),
+                "fields": (
+                    "meta_title",
+                    "meta_description",
+                )
+            },
+        ),
     )
 
     @admin.action(description="Mark selected articles as Published")

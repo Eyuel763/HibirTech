@@ -77,7 +77,7 @@ export default function AboutPage() {
               Building the Future of Ethiopian Tech from the <span className="text-primary">Ground Up</span>
             </h1>
             <p className="text-muted text-base sm:text-lg leading-relaxed">
-              Hibir Tech is a fast-moving technology startup based in Addis Ababa. We combine practical, project-based STEM education for young minds with modern, enterprise-grade software development.
+              Hibir Tech is a fast-moving technology startup based in Addis Ababa. We build enterprise IoT Fleet Management Systems, empower young minds through hands-on STEM education, and deliver custom software engineering.
             </p>
           </div>
         </Container>
@@ -94,7 +94,7 @@ export default function AboutPage() {
                 We saw a critical gap: traditional technology education often focuses purely on theory, leaving students unprepared for real-world software and hardware challenges.
               </p>
               <p className="text-muted leading-relaxed text-sm sm:text-base">
-                As a young startup, Hibir Tech was founded to change that. We started by building hands-on robotics kits, interactive block-coding exercises, and full-stack software applications. Today, we empower both young learners building their first micro-controllers and organizations seeking robust digital solutions.
+                Hibir Tech was founded to bridge that gap. We engineer real-world IoT solutions like our Fleet Management System, deliver hands-on robotics and coding bootcamps through Hibir STEM Academy, and build custom web and mobile software tailored for growing enterprises.
               </p>
             </div>
 

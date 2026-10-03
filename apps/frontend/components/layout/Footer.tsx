@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
-import { MAIN_NAV_ITEMS, SITE_CONFIG } from '@/lib/constants/navigation';
+import { FOOTER_NAV_CONFIG, SITE_CONFIG } from '@/lib/constants/navigation';
 
 export const Footer: React.FC = () => {
   return (
@@ -21,10 +21,24 @@ export const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Col 2: Quick Links */}
+          {/* Col 2: Core Products */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-white font-semibold text-base mb-1">Quick Navigation</h4>
-            {MAIN_NAV_ITEMS.slice(0, 5).map((item) => (
+            <h4 className="text-white font-semibold text-base mb-1">Products & Solutions</h4>
+            {FOOTER_NAV_CONFIG.products.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-slate-300 hover:text-primary transition-colors flex items-center justify-between"
+              >
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </div>
+
+          {/* Col 3: STEM Academy */}
+          <div className="flex flex-col gap-3">
+            <h4 className="text-white font-semibold text-base mb-1">STEM Academy</h4>
+            {FOOTER_NAV_CONFIG.academy.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -35,33 +49,27 @@ export const Footer: React.FC = () => {
             ))}
           </div>
 
-          {/* Col 3: Programs & Services */}
-          <div className="flex flex-col gap-3">
-            <h4 className="text-white font-semibold text-base mb-1">Impact Areas</h4>
-            <Link href="/programs" className="text-sm text-slate-300 hover:text-primary transition-colors">
-              STEM Academy Programs
-            </Link>
-            <Link href="/schools" className="text-sm text-slate-300 hover:text-primary transition-colors">
-              School Partnerships
-            </Link>
-            <Link href="/projects" className="text-sm text-slate-300 hover:text-primary transition-colors">
-              Robotics & Student Showcase
-            </Link>
-            <Link href="/events" className="text-sm text-slate-300 hover:text-primary transition-colors">
-              Workshops & Competitions
-            </Link>
-          </div>
-
           {/* Col 4: Contact & Location */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-white font-semibold text-base mb-1">Contact Us</h4>
-            <p className="text-sm text-slate-300">📍 {SITE_CONFIG.location}</p>
-            <a
-              href={`mailto:${SITE_CONFIG.contactEmail}`}
-              className="text-sm text-slate-300 hover:text-primary transition-colors"
-            >
-              ✉️ {SITE_CONFIG.contactEmail}
-            </a>
+            <h4 className="text-white font-semibold text-base mb-1">Company & Contact</h4>
+            {FOOTER_NAV_CONFIG.company.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-slate-300 hover:text-primary transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-2 border-t border-slate-700/60 text-xs text-slate-400 space-y-1">
+              <p>📍 {SITE_CONFIG.location}</p>
+              <a
+                href={`mailto:${SITE_CONFIG.contactEmail}`}
+                className="hover:text-primary transition-colors block"
+              >
+                ✉️ {SITE_CONFIG.contactEmail}
+              </a>
+            </div>
           </div>
         </div>
 
@@ -69,11 +77,11 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-slate-700/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
+            <Link href="/contact" className="hover:text-white transition-colors">
+              Contact Us
             </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of Service
+            <Link href="/fleet-management#demo" className="hover:text-white transition-colors">
+              Request Fleet Demo
             </Link>
           </div>
         </div>

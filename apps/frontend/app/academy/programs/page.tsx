@@ -118,15 +118,15 @@ export default function ProgramsDirectoryPage() {
                     <div className="flex flex-col gap-4">
                       <div className="flex items-center justify-between">
                         <Badge variant="primary">{program.level}</Badge>
-                        <span className="text-xs font-semibold text-muted flex items-center gap-1">
-                          <Users className="w-3.5 h-3.5 text-primary" /> {program.targetAudience}
+                        <span className="text-sm font-semibold text-secondary flex items-center gap-1.5">
+                          <Users className="w-4 h-4 text-primary" /> {program.targetAudience}
                         </span>
                       </div>
 
                       <div>
                         <h2 className="text-xl font-bold text-secondary">{program.title}</h2>
-                        <div className="flex items-center gap-2 text-xs text-primary font-medium mt-1">
-                          <Clock className="w-3.5 h-3.5" /> {program.duration}
+                        <div className="flex items-center gap-2 text-sm text-primary font-semibold mt-1">
+                          <Clock className="w-4 h-4" /> {program.duration}
                         </div>
                       </div>
 
@@ -135,10 +135,10 @@ export default function ProgramsDirectoryPage() {
                       </p>
 
                       <div className="space-y-2 pt-2 border-t border-subtle">
-                        <p className="text-xs font-bold text-secondary">Learning Outcomes:</p>
+                        <p className="text-sm font-bold text-secondary">Learning Outcomes:</p>
                         {program.outcomes.map((outcome, idx) => (
-                          <div key={idx} className="text-xs text-muted flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <div key={idx} className="text-sm text-muted flex items-start gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                             <span>{outcome}</span>
                           </div>
                         ))}
@@ -146,9 +146,9 @@ export default function ProgramsDirectoryPage() {
                     </div>
 
                     <div className="pt-6 border-t border-subtle mt-6 flex items-center justify-between">
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-1.5">
                         {program.featuredTools.map((tool, idx) => (
-                          <Badge key={idx} variant="secondary" className="text-[10px] font-mono">
+                          <Badge key={idx} variant="secondary" className="text-xs font-mono font-medium px-2.5 py-1">
                             {tool}
                           </Badge>
                         ))}

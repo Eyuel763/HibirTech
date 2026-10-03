@@ -1,14 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-  Zap, 
-  Bot, 
-  Radio, 
-  ArrowRight, 
+  Truck, 
+  GraduationCap, 
   Code2, 
+  ArrowRight, 
   Layers, 
-  Cpu, 
-  CheckCircle2 
+  CheckCircle2, 
+  Clock 
 } from 'lucide-react';
 
 import { Container } from '@/components/ui/Container';
@@ -16,30 +15,7 @@ import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
-
-const SERVICES = [
-  {
-    slug: 'software-development',
-    title: 'Custom Software Development',
-    description: 'Modern, high-concurrency web and mobile applications engineered with Django, Next.js, and Flutter.',
-    icon: Zap,
-    features: ['Modular Monoliths & Microservices', 'REST & GraphQL APIs', 'Cross-Platform Mobile Apps'],
-  },
-  {
-    slug: 'artificial-intelligence',
-    title: 'Artificial Intelligence & Data',
-    description: 'Predictive modeling, automated workflows, and practical machine learning solutions tailored for business needs.',
-    icon: Bot,
-    features: ['Computer Vision Systems', 'Data Analytics Pipelines', 'Intelligent Process Automation'],
-  },
-  {
-    slug: 'iot',
-    title: 'IoT & Embedded Systems',
-    description: 'Hardware-in-the-loop integration, ESP32 micro-controllers, real-time sensor dashboards, and edge computing.',
-    icon: Radio,
-    features: ['Real-Time Telemetry', 'Micro-controller Firmware', 'IoT Dashboard Architecture'],
-  },
-];
+import { PRODUCTS } from '@/lib/constants/products';
 
 export default function TechnologyHubPage() {
   return (
@@ -49,51 +25,67 @@ export default function TechnologyHubPage() {
         <Container>
           <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-5">
             <Badge variant="primary" className="py-1 px-3.5 text-xs sm:text-sm">
-              <Layers className="w-3.5 h-3.5 mr-1 inline-block" /> Enterprise & Technical Capabilities
+              <Layers className="w-3.5 h-3.5 mr-1 inline-block" /> Product & Technical Capabilities
             </Badge>
             <h1 className="text-secondary leading-tight">
-              Modern Technology Solutions for <span className="text-primary">Growing Ecosystems</span>
+              Technology Solutions for <span className="text-primary">Fleet & Education</span>
             </h1>
             <p className="text-muted text-base sm:text-lg leading-relaxed">
-              From full-stack web platforms and cross-platform mobile apps to embedded IoT systems and AI integration, Hibir Tech delivers clean, maintainable engineering.
+              Explore our core products and upcoming enterprise capabilities, engineered with ESP32 IoT hardware, Django REST Framework backends, Next.js web applications, and Flutter mobile apps.
             </p>
           </div>
         </Container>
       </Section>
 
-      {/* SERVICE CARDS */}
+      {/* PRODUCTS & CAPABILITIES GRID */}
       <Section className="bg-surface">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SERVICES.map((service) => {
-              const IconComp = service.icon;
-              return (
-                <Card key={service.slug} className="flex flex-col justify-between p-6 hover:shadow-lg transition-all">
-                  <div className="flex flex-col gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-red-50 text-primary flex items-center justify-center">
-                      <IconComp className="w-6 h-6" />
+            {PRODUCTS.map((product) => (
+              <Card key={product.slug} className="flex flex-col justify-between p-6 sm:p-8 hover:shadow-lg transition-all">
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-12 h-12 rounded-lg bg-red-50 text-primary flex items-center justify-center font-bold">
+                      {product.slug === 'fleet-management' && <Truck className="w-6 h-6" />}
+                      {product.slug === 'stem-academy' && <GraduationCap className="w-6 h-6" />}
+                      {product.slug === 'software-development' && <Code2 className="w-6 h-6 text-amber-600" />}
                     </div>
-                    <h3 className="text-xl font-bold">{service.title}</h3>
-                    <p className="text-sm text-muted leading-relaxed">{service.description}</p>
-                    <ul className="flex flex-col gap-2 pt-2 border-t border-subtle">
-                      {service.features.map((feat, idx) => (
-                        <li key={idx} className="text-xs text-secondary flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                          {feat}
-                        </li>
-                      ))}
-                    </ul>
+                    {product.status === 'coming_soon' ? (
+                      <Badge variant="accent" className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" /> Coming Soon
+                      </Badge>
+                    ) : (
+                      <Badge variant="primary">{product.badge}</Badge>
+                    )}
                   </div>
-                  <div className="pt-6">
-                    <Link href={`/technology/${service.slug}`}>
-                      <Button variant="outline" size="sm" fullWidth className="justify-between">
-                        Explore Capability <ArrowRight className="w-4 h-4" />
-                      </Button>
-                    </Link>
-                  </div>
-                </Card>
-              );
-            })}
+
+                  <h3 className="text-xl font-bold text-secondary">{product.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{product.shortDescription}</p>
+
+                  <ul className="flex flex-col gap-2 pt-2 border-t border-subtle">
+                    {product.highlights.slice(0, 3).map((feat, idx) => (
+                      <li key={idx} className="text-xs text-secondary flex items-center gap-2 font-medium">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-6">
+                  <Link href={product.href}>
+                    <Button
+                      variant={product.status === 'coming_soon' ? 'outline' : 'primary'}
+                      size="sm"
+                      fullWidth
+                      className="justify-between"
+                    >
+                      {product.ctaText} <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </Card>
+            ))}
           </div>
         </Container>
       </Section>

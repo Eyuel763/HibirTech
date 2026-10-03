@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { MAIN_NAV_ITEMS, SITE_CONFIG } from '@/lib/constants/navigation';
+import { MAIN_NAV_ITEMS, SITE_CONFIG, PRODUCT_NAV_ITEMS } from '@/lib/constants/navigation';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,28 +42,38 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3.5 py-2 rounded-lg text-sm transition-colors flex items-center gap-1.5 ${
                     isActive
-                      ? 'text-primary bg-muted'
-                      : 'text-foreground hover:text-primary hover:bg-muted/50'
+                      ? 'text-primary bg-primary/10 font-bold'
+                      : 'text-secondary hover:text-primary hover:bg-primary/5 font-medium'
                   }`}
                 >
                   {item.label}
+                  {item.badge && (
+                    <Badge variant="outline" className="text-[10px] py-0 px-1.5">
+                      {item.badge}
+                    </Badge>
+                  )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Right Action CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/programs">
+          {/* Right Action CTAs */}
+          <div className="hidden md:flex items-center gap-2.5">
+            <Link href="/fleet-management#demo">
+              <Button size="sm" variant="outline" className="border-secondary/20 text-secondary hover:bg-muted">
+                Fleet Demo
+              </Button>
+            </Link>
+            <Link href="/academy">
               <Button size="sm" variant="primary">
-                Explore Programs
+                STEM Academy
               </Button>
             </Link>
           </div>
 
-          {/* Mobile Menu Button (Min 44px touch target) */}
+          {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
             className="md:hidden h-11 w-11 flex items-center justify-center rounded-lg text-secondary hover:bg-muted transition-colors focus:outline-none"
@@ -92,21 +103,33 @@ export const Navbar: React.FC = () => {
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className={`px-4 py-3 rounded-lg text-base font-medium transition-colors flex items-center justify-between ${
+                className={`px-4 py-3 rounded-lg text-base transition-colors flex items-center justify-between ${
                   isActive
-                    ? 'text-primary bg-muted font-semibold'
-                    : 'text-foreground hover:bg-muted/60'
+                    ? 'text-primary bg-primary/10 font-bold'
+                    : 'text-secondary hover:bg-muted/60 font-medium'
                 }`}
               >
-                {item.label}
+                <div className="flex items-center gap-2">
+                  <span>{item.label}</span>
+                  {item.badge && (
+                    <Badge variant="outline" className="text-[10px]">
+                      {item.badge}
+                    </Badge>
+                  )}
+                </div>
                 <span className="text-muted text-sm">→</span>
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link href="/programs" onClick={closeMenu}>
+          <div className="pt-3 grid grid-cols-2 gap-2 border-t border-subtle mt-2">
+            <Link href="/fleet-management#demo" onClick={closeMenu}>
+              <Button fullWidth variant="outline" size="md">
+                Fleet Demo
+              </Button>
+            </Link>
+            <Link href="/academy" onClick={closeMenu}>
               <Button fullWidth variant="primary" size="md">
-                Explore Programs
+                STEM Academy
               </Button>
             </Link>
           </div>
