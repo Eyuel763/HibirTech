@@ -61,14 +61,14 @@ export const Navbar: React.FC = () => {
 
           {/* Right Action CTAs */}
           <div className="hidden md:flex items-center gap-2.5">
-            <Link href="/fleet-management#demo">
-              <Button size="sm" variant="outline" className="border-secondary/20 text-secondary hover:bg-muted">
-                Fleet Demo
-              </Button>
-            </Link>
             <Link href="/academy">
               <Button size="sm" variant="primary">
                 STEM Academy
+              </Button>
+            </Link>
+            <Link href="/fleet-management#demo">
+              <Button size="sm" variant="outline" className="border-secondary/20 text-secondary hover:bg-muted">
+                Fleet Demo
               </Button>
             </Link>
           </div>
@@ -122,14 +122,14 @@ export const Navbar: React.FC = () => {
             );
           })}
           <div className="pt-3 grid grid-cols-2 gap-2 border-t border-subtle mt-2">
-            <Link href="/fleet-management#demo" onClick={closeMenu}>
-              <Button fullWidth variant="outline" size="md">
-                Fleet Demo
-              </Button>
-            </Link>
             <Link href="/academy" onClick={closeMenu}>
               <Button fullWidth variant="primary" size="md">
                 STEM Academy
+              </Button>
+            </Link>
+            <Link href="/fleet-management#demo" onClick={closeMenu}>
+              <Button fullWidth variant="outline" size="md">
+                Fleet Demo
               </Button>
             </Link>
           </div>

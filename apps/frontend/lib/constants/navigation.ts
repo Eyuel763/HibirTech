@@ -13,14 +13,14 @@ export interface NavGroup {
 
 export const PRODUCT_NAV_ITEMS: NavItem[] = [
   {
-    label: 'Fleet Management System',
-    href: '/fleet-management',
-    badge: 'Product',
-  },
-  {
     label: 'STEM Academy',
     href: '/academy',
     badge: 'Academy',
+  },
+  {
+    label: 'Fleet Management System',
+    href: '/fleet-management',
+    badge: 'Product',
   },
   {
     label: 'Software Engineering',
@@ -32,8 +32,8 @@ export const PRODUCT_NAV_ITEMS: NavItem[] = [
 
 export const MAIN_NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Fleet Management', href: '/fleet-management' },
   { label: 'STEM Academy', href: '/academy' },
+  { label: 'Fleet Management', href: '/fleet-management' },
   { label: 'About Us', href: '/about' },
   { label: 'News', href: '/news' },
   { label: 'Contact', href: '/contact' },
@@ -41,8 +41,8 @@ export const MAIN_NAV_ITEMS: NavItem[] = [
 
 export const FOOTER_NAV_CONFIG = {
   products: [
-    { label: 'Fleet Management System', href: '/fleet-management' },
     { label: 'STEM Academy', href: '/academy' },
+    { label: 'Fleet Management System', href: '/fleet-management' },
     { label: 'Software Engineering (Soon)', href: '/technology/software-development' },
   ],
   academy: [
@@ -61,7 +61,7 @@ export const FOOTER_NAV_CONFIG = {
 
 export const SITE_CONFIG = {
   name: 'Hibir Technologies',
-  description: 'Building high-impact technology products including Fleet Management Systems and empowering the next generation through STEM education in Ethiopia.',
+  description: 'Empowering the next generation of African innovators through hands-on STEM education, robotics, and hardware engineering — while building enterprise-grade Fleet Management systems.',
   contactEmail: 'contact@hibirtech.com',
   location: 'Addis Ababa, Ethiopia',
 };
