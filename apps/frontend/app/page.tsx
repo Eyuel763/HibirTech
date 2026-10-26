@@ -16,7 +16,8 @@ import {
   Smartphone, 
   Zap,
   Clock,
-  Rocket
+  Rocket,
+  ChevronRight
 } from 'lucide-react';
 
 import { Container } from '@/components/ui/Container';
@@ -68,40 +69,74 @@ export default function HomePage() {
 
             {/* Visual Dual Product Card */}
             <div className="w-full lg:w-1/2 flex items-center justify-center">
-              <div className="w-full max-w-md rounded-2xl bg-secondary text-white p-6 sm:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden border border-slate-700">
-                <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/20 rounded-full blur-2xl"></div>
+              <div className="w-full max-w-sm sm:max-w-lg lg:max-w-md rounded-2xl bg-secondary text-white p-5 sm:p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden border border-slate-700">
+                <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/20 rounded-full blur-2xl pointer-events-none"></div>
 
-                <div className="flex items-center justify-between z-10 pb-4 border-b border-slate-700/80">
-                  <Badge variant="accent">Hibir Tech Hub</Badge>
-                  <span className="text-xs text-slate-400 font-mono">Addis Ababa, ET</span>
+                <div className="flex items-center justify-between gap-3 z-10 pb-3 sm:pb-4 border-b border-slate-700/80">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                    <Badge variant="accent" className="text-xs font-semibold shrink-0">Hibir Tech Hub</Badge>
+                  </div>
+                  <span className="text-xs text-slate-400 font-mono shrink-0">Addis Ababa, ET</span>
                 </div>
 
-                <div className="z-10 my-6 space-y-4">
-                  <div className="p-3 bg-slate-800/90 rounded-xl border border-slate-700 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
+                <div className="z-10 my-4 sm:my-5 space-y-3">
+                  <Link
+                    href="/academy"
+                    className="group p-3 sm:p-3.5 bg-slate-800/90 hover:bg-slate-800 rounded-xl border border-slate-700/80 hover:border-emerald-500/50 transition-all flex items-center justify-between gap-3 shadow-sm hover:shadow-md block"
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="p-2.5 rounded-lg bg-emerald-500/20 text-emerald-400 group-hover:scale-105 transition-transform shrink-0">
                         <GraduationCap className="w-5 h-5" />
                       </div>
-                      <div>
-                        <p className="text-xs font-bold text-white">STEM Academy</p>
-                        <p className="text-[11px] text-slate-400">Hardware Labs & Robotics</p>
+                      <div className="min-w-0 flex flex-col gap-0.5">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                          <p className="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                            STEM Academy
+                          </p>
+                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap">
+                            Flagship Program
+                          </span>
+                        </div>
+                        <p className="text-[11px] sm:text-xs text-slate-400">Hardware Labs, Robotics & AI</p>
                       </div>
                     </div>
-                    <Badge variant="primary" className="text-[10px]">Flagship Program</Badge>
-                  </div>
+                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                  </Link>
 
-                  <div className="p-3 bg-slate-800/90 rounded-xl border border-slate-700 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-primary/20 text-primary">
+                  <Link
+                    href="/fleet-management"
+                    className="group p-3 sm:p-3.5 bg-slate-800/90 hover:bg-slate-800 rounded-xl border border-slate-700/80 hover:border-primary/50 transition-all flex items-center justify-between gap-3 shadow-sm hover:shadow-md block"
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="p-2.5 rounded-lg bg-primary/20 text-primary group-hover:scale-105 transition-transform shrink-0">
                         <Truck className="w-5 h-5" />
                       </div>
-                      <div>
-                        <p className="text-xs font-bold text-white">Fleet Telemetry</p>
-                        <p className="text-[11px] text-slate-400">GPS, Fuel Sensors & Scorecards</p>
+                      <div className="min-w-0 flex flex-col gap-0.5">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                          <p className="text-xs sm:text-sm font-bold text-white group-hover:text-red-300 transition-colors">
+                            Fleet Telemetry
+                          </p>
+                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 whitespace-nowrap">
+                            Enterprise System
+                          </span>
+                        </div>
+                        <p className="text-[11px] sm:text-xs text-slate-400">GPS, Fuel Sensors & Scorecards</p>
                       </div>
                     </div>
-                    <Badge variant="secondary" className="text-[10px]">Enterprise System</Badge>
-                  </div>
+                    <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                  </Link>
+                </div>
+
+                <div className="z-10 pt-3 border-t border-slate-700/80 flex items-center justify-between text-[11px] sm:text-xs text-slate-400">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                    STEM Cohorts Active
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+                    Live Fleet IoT
+                  </span>
                 </div>
               </div>
             </div>

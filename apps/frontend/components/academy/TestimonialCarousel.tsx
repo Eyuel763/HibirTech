@@ -170,7 +170,7 @@ export default function TestimonialCarousel() {
       </button>
 
       {/* Dot Indicators */}
-      <div className="flex items-center justify-center gap-2.5 mt-8">
+      <div className="flex items-center justify-center gap-2 mt-5">
         {TESTIMONIALS.map((_, index) => (
           <button
             key={index}

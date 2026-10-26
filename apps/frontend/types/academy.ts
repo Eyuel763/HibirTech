@@ -1,4 +1,4 @@
-export type DisciplineCategory = 'coding' | 'robotics' | 'iot' | 'ai-ml';
+export type DisciplineCategory = 'coding' | 'robotics' | 'iot' | 'ai-ml' | '3d-modeling';
 
 export interface StemDiscipline {
   id: string;

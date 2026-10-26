@@ -44,10 +44,10 @@ const VALUES = [
 
 const LEADERSHIP = [
   {
-    name: 'Eyuel Gebreselassie',
-    role: 'Co-Founder & Lead Software Engineer',
+    name: 'Kidus Samuel',
+    role: 'Founder',
     bio: 'Software engineering researcher specializing in full-stack web architectures, IoT systems, and STEM curriculum engineering.',
-    badge: 'Co-Founder',
+    badge: 'Founder',
   },
   {
     name: 'Hibir Tech Team',
