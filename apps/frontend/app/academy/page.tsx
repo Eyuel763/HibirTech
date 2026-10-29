@@ -94,7 +94,7 @@ export default function AcademyLandingPage() {
             <Badge variant="secondary" className="mb-2 px-3 py-1 text-xs sm:text-sm font-semibold">Our Mindset</Badge>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-secondary tracking-tight">Hardware-in-the-Loop & Project-Based Learning</h2>
             <p className="text-slate-600 mt-2 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-              We believe coding isn't just learned on a screen—it comes alive when software interacts with physical circuits, sensors, and real-world models.
+              We believe coding isn't just learned on a screen, it comes alive when software interacts with physical circuits, sensors, and real-world models.
             </p>
           </div>
 
@@ -217,7 +217,7 @@ export default function AcademyLandingPage() {
                       </Badge>
                     ))}
                   </div>
-                  <Link href={`/academy/programs/${prog.slug}`}>
+                  <Link href={`/enroll?program=${prog.slug}`}>
                     <Button variant="primary" size="sm">Enroll</Button>
                   </Link>
                 </div>

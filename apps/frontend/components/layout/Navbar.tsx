@@ -75,7 +75,7 @@ export const Navbar: React.FC = () => {
 
             {/* Right Action CTAs */}
             <div className="hidden xl:flex items-center gap-2.5 whitespace-nowrap">
-              <Link href="/academy/programs">
+              <Link href="/enroll">
                 <Button size="sm" variant="primary" className="whitespace-nowrap">
                   Enroll Now
                 </Button>
@@ -159,7 +159,7 @@ export const Navbar: React.FC = () => {
             </div>
 
             <div className="pt-6 border-t border-subtle flex flex-col gap-3 mt-6">
-              <Link href="/academy/programs" onClick={closeMenu} className="w-full">
+              <Link href="/enroll" onClick={closeMenu} className="w-full">
                 <Button fullWidth variant="primary" size="lg" className="h-12 text-base font-bold shadow-md shadow-red-600/20">
                   Enroll in STEM Academy
                 </Button>

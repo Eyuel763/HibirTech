@@ -121,7 +121,7 @@ export default async function ProgramDetailPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <Link href="/contact" className="w-full">
+                <Link href={`/enroll?program=${program.slug}`} className="w-full">
                   <Button variant="primary" size="md" fullWidth>
                     Submit Enrollment Inquiry
                   </Button>
